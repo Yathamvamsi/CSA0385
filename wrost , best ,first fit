@@ -1,0 +1,26 @@
+#include<stdio.h>
+int main()
+{
+    int blocksize[]={100,200,300,400,500},processsize[]={112,212,312,412},allocation[4]={-1,-1,-1,-1};
+    int m=5,n=4,i,j;
+    for (i=0;i<n;i++)
+    {
+        int wstidx=-1;
+        for (j=0;j<m;j++)
+        {
+            if (blocksize[j]>=processsize[i] && (wstidx==-1 || blocksize[j]>blocksize[wstidx]))
+            wstidx=j;
+        }
+        if (wstidx!=0)
+        {
+            allocation[i]=wstidx;
+            blocksize[wstidx]-=processsize[i];
+        }
+    }
+    printf("process no.\t\tblock no.\n");
+    for (i=0;i<n;i++)
+    {
+        printf("%d\t\t\t%s\n",i+1,(allocation[i]!=-1)? "allocated" : "not allocated");
+    }
+    return 0;
+}
