@@ -1,0 +1,10 @@
+#include<stdio.h>
+#include<sys/stat.h>
+int main()
+{
+    mkdir("main-directory",0777);
+    mkdir("main-directory/sub-directory1",0777);
+    mkdir("main-directory/sub-directory2",0777);
+    printf("directories created successfully");
+    return 0;
+}
